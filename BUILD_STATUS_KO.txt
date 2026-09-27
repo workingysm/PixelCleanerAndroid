@@ -1,0 +1,26 @@
+Pixel Cleaner v1.1-secure 빌드 상태
+=================================
+
+완료:
+- 보안 하드닝 소스 반영
+- 노이즈 감소 0~100 슬라이더 + 8/15/25 빠른 프리셋
+- 샤프닝 0~100, 외곽 픽셀 정리 0~100 유지
+- CoreSelfTest PASS
+- XML 파싱 PASS
+- 보안 preflight PASS
+- R8 release 설정 및 GitHub Actions APK 빌드/서명 워크플로 포함
+
+현재 실행 환경 제한:
+- Android SDK/Build Tools/Gradle이 설치되어 있지 않고 외부 바이너리 다운로드도 차단되어 있어
+  이 세션 안에서 실제 APK 바이트를 생성/서명/검증할 수 없었습니다.
+- 이는 앱 소스 오류 판정이 아니라 로컬 Android 빌드 툴체인 부재입니다.
+
+APK 생성 경로:
+1) GitHub: 저장소에 프로젝트 업로드 후 Actions의
+   "Build installable Pixel Cleaner APK" 워크플로를 수동 실행
+   -> PixelCleaner-v1.1-secure.apk artifact 생성
+2) Android Studio: SDK 35로 프로젝트 열기 후 Release APK 빌드 및 본인 signing key로 서명
+
+주의:
+GitHub Actions 워크플로 기본 설정은 매 실행마다 임시 서명키를 생성합니다.
+따라서 개인 테스트 설치에는 적합하지만 반복 업데이트/배포용으로는 고정 release signing key를 안전하게 관리해야 합니다.
